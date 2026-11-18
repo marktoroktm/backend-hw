@@ -29,6 +29,7 @@ src/main/java/com/aldisued/iot/monitoring/
   controller/                  # REST: /sensors (POST), /sensor-readings (POST), /alerts/latest (GET)
   dto/                         # Java records: SensorDto (validated), SensorReadingDto, AlertDto
   entity/                      # JPA entities: Sensor (UUID id), SensorReading, Alert (Long ids), SensorType enum
+  exception/                   # Exception classes
   messaging/                   # @KafkaListener consumers
   repository/                  # Spring Data JPA repositories (derived queries + JPQL @Query)
   service/                     # Business logic; MeasurementCalculatorService is pure (no Spring deps)
@@ -36,7 +37,8 @@ src/main/resources/application.properties
 src/test/java/com/aldisued/iot/monitoring/
   IntegrationTestBase.java          # @SpringBootTest + MockMvc + @ActiveProfiles("docker")
   TestcontainersConfiguration.java  # postgres:17.6 container, active only in the "docker" profile
-  tasks/TaskNTests.java             # One test class per task in TASKS.md
+  tasks/                       # Supplied assignment tests: Task0Test and TaskNTests
+  controller/                  # Additional controller tests, e.g. SensorReadingControllerAdditionalTests
 src/test/resources/
   application-docker.yml / application-local.yml
   sql/task-N-test-data.sql          # Seed data loaded with @Sql(BEFORE_TEST_CLASS)

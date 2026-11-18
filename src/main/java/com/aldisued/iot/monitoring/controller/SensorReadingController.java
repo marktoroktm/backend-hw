@@ -1,8 +1,11 @@
 package com.aldisued.iot.monitoring.controller;
 
 import com.aldisued.iot.monitoring.dto.SensorReadingDto;
-import com.aldisued.iot.monitoring.entity.SensorReading;
+import com.aldisued.iot.monitoring.exception.SensorNotFoundException;
 import com.aldisued.iot.monitoring.service.SensorReadingService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +22,13 @@ public class SensorReadingController {
   }
 
   @PostMapping
-  public SensorReading saveSensorReading(@RequestBody SensorReadingDto sensorReadingDto) {
-    return sensorReadingService.saveSensorReading(sensorReadingDto);
+  public ResponseEntity<?> saveSensorReading(@RequestBody SensorReadingDto sensorReadingDto) {
+    try {
+      return ResponseEntity.ok(sensorReadingService.saveSensorReading(sensorReadingDto));
+    } catch (SensorNotFoundException ex) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+          .contentType(MediaType.TEXT_PLAIN)
+          .body(ex.getMessage());
+    }
   }
 }
