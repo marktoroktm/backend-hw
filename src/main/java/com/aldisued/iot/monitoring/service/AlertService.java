@@ -28,7 +28,11 @@ public class AlertService {
   }
 
   public AlertDto findLastAlertBySensorId(UUID sensorId) {
-    // TODO: Task 5
-    return null;
+    Alert alert = alertRepository.findFirstBySensor_IdOrderByTimestampDesc(sensorId)
+        .orElse(null);
+    if (alert == null) {
+      return null;
+    }
+    return new AlertDto(sensorId, alert.getMessage(), alert.getTimestamp());
   }
 }

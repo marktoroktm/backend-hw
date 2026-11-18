@@ -39,6 +39,7 @@ src/test/java/com/aldisued/iot/monitoring/
   TestcontainersConfiguration.java  # postgres:17.6 container, active only in the "docker" profile
   tasks/                       # Supplied assignment tests: Task0Test and TaskNTests
   controller/                  # Additional controller tests, e.g. SensorReadingControllerAdditionalTests
+  repository/                  # Additional repository tests, e.g. AlertRepositoryAdditionalTests
 src/test/resources/
   application-docker.yml / application-local.yml
   sql/task-N-test-data.sql          # Seed data loaded with @Sql(BEFORE_TEST_CLASS)
