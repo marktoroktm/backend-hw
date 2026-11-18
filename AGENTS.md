@@ -40,6 +40,7 @@ src/test/java/com/aldisued/iot/monitoring/
   tasks/                       # Supplied assignment tests: Task0Test and TaskNTests
   controller/                  # Additional controller tests, e.g. SensorReadingControllerAdditionalTests
   repository/                  # Additional repository tests, e.g. AlertRepositoryAdditionalTests
+  service/                     # Additional service tests, e.g. MeasurementCalculatorAdditionalTests
 src/test/resources/
   application-docker.yml / application-local.yml
   sql/task-N-test-data.sql          # Seed data loaded with @Sql(BEFORE_TEST_CLASS)
