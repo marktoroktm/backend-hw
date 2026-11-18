@@ -1,6 +1,5 @@
 package com.aldisued.iot.monitoring.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
